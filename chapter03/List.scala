@@ -30,5 +30,14 @@ package datastructures {
 
     def foldLeftViaFoldRight[A,B](l: List[A], z: B)(f: (B,A) => B): B =
       foldRight(l, (b:B) => b)((a,g) => b => g(f(b,a)))(z)
+
+    def append[A](a1: List[A], a2: List[A]): List[A] =
+      a1 match {
+        case Nil => a2
+        case Cons(h,t) => Cons(h, append(t, a2))
+      }
+
+    def concat[A](l: List[List[A]]): List[A] =
+      List.foldRight(l, Nil:List[A])(append)
   }
 }
