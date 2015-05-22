@@ -11,6 +11,9 @@ package errorhandling {
       case None => default
       case Some(a) => a
     }
+
+    def flatMap[B](f: A => Option[B]): Option[B] =
+      map(f) getOrElse None
   }
   case class Some[+A](get: A) extends Option[A]
   case object None extends Option[Nothing]
