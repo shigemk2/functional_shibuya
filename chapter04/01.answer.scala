@@ -8,3 +8,7 @@ val v = List(Some("A"), None)
 for(each <- v) println(each.getOrElse("empty"))
 
 println(Some(1).flatMap((x: Int) => Some(x + 1)))
+println(None.flatMap((x: Int) => Some(x + 1)))
+
+println(Some(1).flatMap_1((x: Int) => Some(x + 1)))
+println(None.flatMap_1((x: Int) => Some(x + 1)))
