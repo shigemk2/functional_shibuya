@@ -2,6 +2,7 @@ package errorhandling {
   import scala.{Option => _, Either => _, _}
 
   sealed trait Option[+A] {
+    // answer 01
     def map[B](f: A => B): Option[B] = this match {
       case None => None
       case Some(a) => Some(f(a))
@@ -27,6 +28,15 @@ package errorhandling {
       case None => ob
       case _ => this
     }
+
+    def filter_1(f: A => Boolean): Option[A] =
+      flatMap(a => if (f(a)) Some(a) else None)
+
+    def filter(f: A => Boolean): Option[A] = this match {
+      case Some(a) if f(a) => this
+      case _ => None
+    }
+    // answer 01
   }
   case class Some[+A](get: A) extends Option[A]
   case object None extends Option[Nothing]
