@@ -19,6 +19,9 @@ package errorhandling {
       case None => None
       case Some(a) => f(a)
     }
+
+    def orElse[B>:A](ob: => Option[B]): Option[B] =
+      this map (Some(_)) getOrElse ob
   }
   case class Some[+A](get: A) extends Option[A]
   case object None extends Option[Nothing]
