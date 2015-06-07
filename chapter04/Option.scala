@@ -1,5 +1,6 @@
+import scala.{Option => _, Either => _, _}
+
 package errorhandling {
-  import scala.{Option => _, Either => _, _}
 
   sealed trait Option[+A] {
     // answer 01
@@ -44,11 +45,20 @@ package errorhandling {
     def variance(xs: Seq[Double]): Option[Double] =
       mean(xs) flatMap (m => mean(xs.map(x => math.pow(x - m, 2))))
 
+  }
+  case class Some[+A](get: A) extends Option[A]
+  case object None extends Option[Nothing]
+
+  object Option {
     // answer 03
     def map2[A,B,C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] =
       a flatMap (aa => b map (bb => f(aa, bb)))
 
+    // answer 04
+    def sequence[A](a: List[Option[A]]): Option[List[A]] =
+      a match {
+        case Nil => Some(Nil)
+        case h :: t => h flatMap (hh => sequence(t) map (hh :: _))
+      }
   }
-  case class Some[+A](get: A) extends Option[A]
-  case object None extends Option[Nothing]
 }
