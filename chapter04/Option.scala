@@ -33,13 +33,16 @@ package errorhandling {
       flatMap(a => if (f(a)) Some(a) else None)
 
     def filter(f: A => Boolean): Option[A] = this match {
-      case Some(a) if f(a) => this
+      case Some(a) if f(a) => Some(a)
       case _ => None
     }
     // answer 01
     def mean(xs: Seq[Double]): Option[Double] =
       if (xs.isEmpty) None
       else Some(xs.sum / xs.length)
+
+    def variance(xs: Seq[Double]): Option[Double] =
+      mean(xs) flatMap (m => mean(xs.map(x => math.pow(x - m, 2))))
   }
   case class Some[+A](get: A) extends Option[A]
   case object None extends Option[Nothing]
