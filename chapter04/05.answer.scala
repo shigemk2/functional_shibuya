@@ -9,4 +9,4 @@ def traverse[A, B](a: List[A])(f: A => Option[B]): Option[List[B]] =
     case h::t => map2(f(h), traverse(t)(f))(_ :: _)
   }
 
-println(traverse(List(1,2,3))((a: Int) => Some(a + 5)))
+println(traverse[Int, Int](List(1,2,3))((a: Int) => Some(a + 5)))
