@@ -48,17 +48,4 @@ package errorhandling {
   }
   case class Some[+A](get: A) extends Option[A]
   case object None extends Option[Nothing]
-
-  object Option {
-    // answer 03
-    def map2[A,B,C](a: Option[A], b: Option[B])(f: (A, B) => C): Option[C] =
-      a flatMap (aa => b map (bb => f(aa, bb)))
-
-    // answer 04
-    def sequence[A](a: List[Option[A]]): Option[List[A]] =
-      a match {
-        case Nil => Some(Nil)
-        case h :: t => h flatMap (hh => sequence(t) map (hh :: _))
-      }
-  }
 }
