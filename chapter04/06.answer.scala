@@ -24,6 +24,9 @@ case class Left[+E](get: E) extends Either[E,Nothing]
 case class Right[+A](get: A) extends Either[Nothing,A]
 
 println(Right(1))
-println(Right(1).map(_.toFloat))
 println(Left("left"))
 
+println(Right(1).map(_.toFloat))
+println(Right(1).flatMap((x: Int) => Right(x.toFloat)))
+val v1 = List(Right("A"), Left("B"))
+for(each <- v1) println(each.orElse(Left("empty")))
