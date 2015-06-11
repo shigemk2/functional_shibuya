@@ -1,18 +1,18 @@
 import Stream._
 trait Stream[+A] {
-  // def toListRecursive: List[A] = this match {
-  //   case Cons(h,t) => h() :: t().toListRecursive
-  //   case _ => List()
-  // }
+  def toListRecursive: List[A] = this match {
+    case Cons(h,t) => h() :: t().toListRecursive
+    case _ => List()
+  }
 
-  // def toList: List[A] = {
-  //   @annotation.tailrec
-  //   def go(s: Stream[A], acc: List[A]): List[A] = s match {
-  //     case Cons(h,t) => go(t(), h() :: acc)
-  //     case _ => acc
-  //   }
-  //   go(this, List()).reverse
-  // }
+  def toList: List[A] = {
+    @annotation.tailrec
+    def go(s: Stream[A], acc: List[A]): List[A] = s match {
+      case Cons(h,t) => go(t(), h() :: acc)
+      case _ => acc
+    }
+    go(this, List()).reverse
+  }
 }
 case object Empty extends Stream[Nothing]
 case class Cons[+A](h: () => A, t: () => Stream[A]) extends Stream[A]
@@ -31,4 +31,12 @@ object Stream {
     else cons(as.head, apply(as.tail: _*))
 
   val ones: Stream[Int] = Stream.cons(1, ones)
+
+}
+
+object Answer01 {
+  import Stream._
+  def main(args: Array[String]) = {
+    println(Stream(1,2))
+  }
 }
