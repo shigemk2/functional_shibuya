@@ -38,5 +38,7 @@ object Answer01 {
   import Stream._
   def main(args: Array[String]) = {
     println(Stream(1,2))
+    println(Stream(1,2).toList)
+    println(Stream(1,2).toListRecursive)
   }
 }
