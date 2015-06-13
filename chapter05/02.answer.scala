@@ -20,12 +20,6 @@ object Stream {
 
 import Stream._
 trait Stream[+A] {
-  // 01
-  def toListRecursive: List[A] = this match {
-    case Cons(h,t) => h() :: t().toListRecursive
-    case _ => List()
-  }
-
   def toList: List[A] = {
     @annotation.tailrec
     def go(s: Stream[A], acc: List[A]): List[A] = s match {
