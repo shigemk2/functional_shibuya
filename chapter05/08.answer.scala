@@ -43,6 +43,6 @@ trait Stream[+A] {
 object Answer08 {
   import Stream._
   def main(args: Array[String]) = {
-    println(Stream.constant(Stream(1)).take(1)) // Cons(<function0>,<function0>)
+    println(Stream.constant(1).take(10).toList) // List(1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
   }
 }
