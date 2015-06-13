@@ -43,7 +43,7 @@ trait Stream[+A] {
 object Answer06 {
   import Stream._
   def main(args: Array[String]) = {
-    println(Stream(1,2,3,4,5).headOption)
-    println(Stream(5,4,3,2,1).headOption)
+    println(Stream(1,2,3,4,5).headOption) // Some(1)
+    println(Stream(5,4,3,2,1).headOption) // Some(5)
   }
 }
