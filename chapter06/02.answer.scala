@@ -37,6 +37,7 @@ object State {
 
 println(RNG.Simple(1))
 println(RNG.Simple(1).nextInt)
+println(RNG.Simple(1).nextInt)
 println(RNG.Simple(-1).nextInt)
 println(RNG.double(RNG.Simple(10)))
 println(RNG.double(RNG.Simple(10)))
