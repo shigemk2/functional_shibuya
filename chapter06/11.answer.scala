@@ -108,6 +108,6 @@ object Candy {
 }
 
 val a = RNG
-// println(a.map2(a.nonNegativeInt, a.nonNegativeInt)((x, y) => x + y).apply(RNG.Simple(-10)))
+println(a.map2(a.nonNegativeInt, a.nonNegativeInt)((x, y) => x + y).apply(RNG.Simple(-10)))
 // println(a.flatMap(a.nonNegativeInt)(x => a.unit(a)))
 
