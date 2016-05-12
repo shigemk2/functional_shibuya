@@ -192,5 +192,4 @@ object Candy {
 }
 
 val a = RNG
-println(a.sequence(List(RNG.Simple(-10), List(RNG.Simple(-10)))))
-
+println(a.map2(a.nonNegativeInt, a.nonNegativeInt)((x, y) => x + y).apply(RNG.Simple(-10)))
